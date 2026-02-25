@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hiqode-deployment
+  labels:
+    app: hiqode
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hiqode
+  template:
+    metadata:
+      labels:
+        app: hiqode
+    spec:
+      containers:
+      - name: hiqode-container
+        image: 773391562788.dkr.ecr.us-east-1.amazonaws.com/hiqode:v2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
